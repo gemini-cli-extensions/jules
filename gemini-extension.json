@@ -1,0 +1,13 @@
+{
+  "name": "gemini-cli-jules",
+  "version": "0.1.0",
+  "contextFileName": "GEMINI.md",
+  "mcpServers": {
+    "julesServer": {
+      "command": "node",
+      "args": [
+        "${extensionPath}/mcp-server/dist/jules.js"
+      ]
+    }
+  }
+}
