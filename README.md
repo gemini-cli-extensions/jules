@@ -1,6 +1,14 @@
 # Jules Extension for Gemini CLI
 
-Jules Gemini CLI extension lets you delegate some of the coding tasks to [Jules](https://jules.google/) asynchronous agent. You can give it tasks like bug fixing, code refactoring, and dependency updates.
+Jules extension for Gemini CLI lets you delegate coding tasks to the [Jules](https://jules.google/) asynchronous agent. This allows you to offload work and track its progress without blocking your terminal.
+
+Some examples of tasks you can assign to Jules are:
+* Bug fixing
+* Code refactoring
+* Dependency version updates
+* Documentation maintenance
+
+Jules works on these tasks in the background. Once the work is complete, Jules can submit the changes to a new branch on your GitHub repository. More at jules.google/docs.
 
 ## Prerequisites
 
@@ -24,7 +32,7 @@ The `--auto-update` is optional: if specified, it will update to new versions as
 To initiate a Jules task, you must use the `/jules` command followed by your prompt. For example:
 
 ```bash
-/jules refactor the authentication logic to use a different library
+/jules add missing unit tests to my repo
 ```
 
 Once you start a task with `/jules`, the extension will work in the background to complete it. To check the status of a task, use the `/jules` command with a query about the task.
