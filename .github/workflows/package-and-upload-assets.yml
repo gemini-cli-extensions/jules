@@ -1,0 +1,59 @@
+name: Package and Upload Release Assets
+
+on:
+  release:
+    types: [created]
+
+  # This allows you to run the workflow manually from the Actions tab
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'The tag of the release to upload assets to'
+        required: true
+        type: string
+
+permissions:
+  # This permission is required for the action to create a GitHub Release
+  contents: write
+
+jobs:
+  build-and-package:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Checks out your repository's code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Sets up the Node.js environment
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Specify the Node.js version you use
+          cache: 'npm'
+          # Tell the cache where to find the package-lock.json
+          cache-dependency-path: mcp-server/package-lock.json
+
+      # 3. Install MCP server dependencies
+      # The MCP server needs its dependencies bundled in the release
+      - name: Install MCP server dependencies
+        working-directory: ./mcp-server
+        run: npm ci
+
+      # 4. Runs your build script
+      - name: Run build
+        working-directory: ./mcp-server
+        run: npm run build
+
+      # 5. Create TAR archive with MCP server dependencies
+      # Exclude root node_modules but INCLUDE mcp-server/node_modules
+      - name: Create TAR archive
+        run: tar -czvf jules-release.tar.gz --exclude='.git' --exclude='.github' --exclude='assets' .
+
+      # 6. Upload the TAR archive as a release asset
+      - name: Upload archive to GitHub Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload \
+            ${{ github.event.release.tag_name || inputs.tag_name }} \
+            jules-release.tar.gz
