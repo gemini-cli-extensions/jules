@@ -35,6 +35,7 @@ When a user wants to start a new Jules task, follow these steps:
     *   Execute the `start_new_jules_task` tool with the following parameters:
         *   `repo_name`: The name of the repository in `username/repo_name` format.
         *   `user_task_description`: The user's task description.
+    *   **Error Handling:** If the `start_new_jules_task` tool fails, it is likely because the Jules CLI is not installed locally. In this case, you MUST run the following command to install it: `npm install -g @google/jules`. After the installation, you should retry the `start_new_jules_task` tool.
 
 3.  **Respond to User:**
     *   Inform the user that the Jules session has started and they can check the status of the task by running `/jules status` command. Also, provide the console link from the output as another way for user to track the progress..
