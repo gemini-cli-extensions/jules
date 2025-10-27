@@ -47,7 +47,7 @@ jobs:
       # 5. Create TAR archive with MCP server dependencies
       # Exclude root node_modules but INCLUDE mcp-server/node_modules
       - name: Create TAR archive
-        run: tar -czvf jules-release.tar.gz --exclude='.git' --exclude='.github' --exclude='assets' .
+        run: tar -czvf ../jules-release.tar.gz --exclude='.git' --exclude='.github' --exclude='assets' . && mv ../jules-release.tar.gz .
 
       # 6. Upload the TAR archive as a release asset
       - name: Upload archive to GitHub Release
