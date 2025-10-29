@@ -43,6 +43,11 @@ For example:
 /jules what is the status of my last task?
 ```
 
+> [!TIP]
+> Gemini CLI will automatically install the Jules CLI if it's not already available. If the installation requires sudo permissions (e.g., `sudo npm install ...`), you will be prompted for your password. To enter it, press `CTRL+F` to switch focus to the interactive shell prompt.
+> 
+> <img width="1600" height="306" alt="456160640__70515148__1638165 (1)" src="https://github.com/user-attachments/assets/c79ddfdd-de45-48a3-83e5-f8ece6888678" />
+
 ## Resources
 
 - [Jules](https://jules.google/): The backend powering this extension.
