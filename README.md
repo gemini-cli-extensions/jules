@@ -8,7 +8,7 @@ Some examples of tasks you can assign to Jules are:
 * Dependency version updates
 * Documentation maintenance
 
-Jules works on these tasks in the background. Once the work is complete, Jules can submit the changes to a new branch on your GitHub repository. More at jules.google/docs.
+Jules works on these tasks in the background. Once the work is complete, Jules can submit the changes to a new branch on your GitHub repository. More at [jules.google/docs](https://jules.google/docs).
 
 ## Prerequisites
 
